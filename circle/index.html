@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="A personal exploration of how people, teams and organizations adapt to evolving technology and ways of working.">
-<title>Adaptive Ecosystem</title>
+<meta name="description" content="Ideas, experiments and reflections on how people, teams and organizations adapt to evolving technology and ways of working.">
+<title>Adaptive Circle — Adaptive Ecosystem</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -41,7 +41,17 @@ header{display:flex;justify-content:space-between;align-items:center;padding:cla
 
 main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:clamp(24px,6vh,72px) 0}
 .question{margin:0;font-weight:500;font-size:clamp(2rem,6.4vw,4.75rem);line-height:1.08;letter-spacing:-.025em;max-width:16ch;text-wrap:balance;animation:rise 1.4s cubic-bezier(.2,.6,.2,1) both}
-.explore{margin-top:clamp(28px,5vh,52px);display:inline-flex;align-items:center;gap:.5em;min-height:48px;padding:0 26px;border:1px solid var(--ink);border-radius:999px;text-decoration:none;font-size:1rem;font-weight:500;transition:background .25s,color .25s,border-color .25s;animation:rise 1.4s .35s cubic-bezier(.2,.6,.2,1) both}
+.explore{margin-top:clamp(28px,5vh,44px);display:inline-flex;align-items:center;gap:.5em;min-height:48px;padding:0 26px;border:1px solid var(--ink);border-radius:999px;text-decoration:none;font-size:1rem;font-weight:500;transition:background .25s,color .25s,border-color .25s;animation:rise 1.4s .35s cubic-bezier(.2,.6,.2,1) both}
+.title{margin:0;font-weight:500;font-size:clamp(2.4rem,7vw,5rem);line-height:1.05;letter-spacing:-.025em;animation:rise 1.4s cubic-bezier(.2,.6,.2,1) both}
+.tm{font-size:.3em;font-weight:400;vertical-align:super;margin-left:.1em;letter-spacing:0;color:var(--mute)}
+.lead{margin:clamp(14px,2.5vh,22px) 0 0;max-width:32ch;font-size:clamp(1.15rem,2.6vw,1.6rem);line-height:1.4;font-weight:400;text-wrap:balance;animation:rise 1.4s .15s cubic-bezier(.2,.6,.2,1) both}
+.sec{margin-top:clamp(56px,11vh,112px);width:100%;max-width:34rem}
+.sec h2{margin:0;font-size:.8rem;font-weight:600;letter-spacing:.02em;color:var(--accent)}
+.sec p{margin:12px 0 0;line-height:1.6;color:var(--mute)}
+.follow{scroll-margin-top:24px}
+.options{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.explore.sm{margin-top:0;min-height:44px;padding:0 22px;font-size:.95rem;animation:none}
+.explore.sm.cta{margin-top:clamp(24px,4vh,36px)}
 .explore span{transition:transform .25s}
 .explore:hover{background:var(--ink);color:var(--bg)}
 .explore:hover span{transform:translateX(3px)}
@@ -85,15 +95,24 @@ dialog.about::backdrop{background:rgba(8,12,14,.5);backdrop-filter:blur(3px);-we
       <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/></svg>
     </button>
     <nav class="menu" id="userMenu" aria-label="Account">
-      <a class="primary" href="/circle" data-link="circle">Adaptive Circle™</a>
+      <a class="primary" href="/circle" data-link="circle" aria-current="page">Adaptive Circle™</a>
       <hr>
       <button type="button" id="themeBtn">Theme: System</button>
     </nav>
   </header>
 
   <main>
-    <h1 class="question" id="question">How should we adapt when AI starts doing the work?</h1>
-    <a class="explore" id="explore" href="#post">Explore <span aria-hidden="true">→</span></a>
+    <h1 class="title">Adaptive Circle<span class="tm">™</span></h1>
+    <p class="lead">Ideas, experiments and reflections on how people, teams and organizations adapt to evolving technology and ways of working.</p>
+    <a class="explore sm cta" id="readLatest" href="/circle/when-ai-does-the-work">Read latest <span aria-hidden="true">→</span></a>
+
+    <section class="sec follow" id="follow" aria-labelledby="followTitle">
+      <h2 id="followTitle">Follow the Circle</h2>
+      <p>Choose how you want to follow new ideas and reflections.</p>
+      <ul class="options">
+        <li><a class="explore sm" id="followLinkedin" href="#" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">→</span></a></li>
+      </ul>
+    </section>
   </main>
 
   <footer>
@@ -124,16 +143,18 @@ dialog.about::backdrop{background:rgba(8,12,14,.5);backdrop-filter:blur(3px);-we
 </dialog>
 
 <script>
-// Weekly content: update these values when a new Adaptive Circle post is published.
+// Adaptive Circle content. LinkedIn is currently the publishing/follow channel.
 var CONTENT = {
-  question: "How should we adapt when AI starts doing the work?",
-  postUrl: "/circle/when-ai-does-the-work",   // target of Explore (current featured article)
-  circleUrl: "/circle"       // Adaptive Circle page
+  circleUrl: "/circle",
+  latestUrl: "/circle/when-ai-does-the-work",   // latest internal article
+  // TODO: paste the existing Adaptive Circle LinkedIn newsletter follow URL here
+  followUrl: "#"
+  // Later: add more follow options as extra <li> items in the "options" list
 };
 (function(){
   var $=function(id){return document.getElementById(id)};
-  $("question").textContent=CONTENT.question;
-  $("explore").href=CONTENT.postUrl;
+  $("readLatest").href=CONTENT.latestUrl;
+  $("followLinkedin").href=CONTENT.followUrl;
   document.querySelector("[data-link=circle]").href=CONTENT.circleUrl;
 
 

@@ -5,10 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Ideas, experiments and reflections on how people, teams and organizations adapt to evolving technology and ways of working.">
 <title>Adaptive Circle — Adaptive Ecosystem</title>
-<link rel="icon" href="/favicon/favicon.ico" sizes="any">
-<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -114,7 +110,7 @@ dialog.about::backdrop{background:rgba(8,12,14,.5);backdrop-filter:blur(3px);-we
       <h2 id="followTitle">Follow the Circle</h2>
       <p>Choose how you want to follow new ideas and reflections.</p>
       <ul class="options">
-        <li><a class="explore sm" href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7439486018887630849" target="_blank">LinkedIn <span aria-hidden="true">→</span></a></li>
+        <li><a class="explore sm" href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7439486018887630849" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">→</span></a></li>
       </ul>
     </section>
   </main>
@@ -157,14 +153,14 @@ var CONTENT = {
 };
 (function(){
   var $=function(id){return document.getElementById(id)};
-  $("readLatest").href=CONTENT.latestUrl;
-  $("followLinkedin").href=CONTENT.followUrl;
-  document.querySelector("[data-link=circle]").href=CONTENT.circleUrl;
+  try{$("readLatest").href=CONTENT.latestUrl;}catch(e){}
+  try{$("followLinkedin").href=CONTENT.followUrl;}catch(e){}
+  try{document.querySelector("[data-link=circle]").href=CONTENT.circleUrl;}catch(e){}
 
 
   // About modal
   var ad=$("about");
-  $("aboutCircle").href=CONTENT.circleUrl;
+  try{$("aboutCircle").href=CONTENT.circleUrl;}catch(e){}
   $("aboutBtn").addEventListener("click",function(){closeMenu();if(ad.showModal)ad.showModal();else ad.setAttribute("open","")});
   $("aboutClose").addEventListener("click",function(){ad.close()});
   ad.addEventListener("click",function(e){if(e.target===ad)ad.close()});

@@ -5,12 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Explore how humans, teams and organizations can continuously adapt as AI and technology transform the way we work.">
 <title>Adaptive Ecosystem | Human & Organizational Adaptation in the AI Era</title>
-<link rel="icon" href="favicon/favicon.ico" sizes="any">
-<link rel="icon" type="image/svg+xml" href="favicon/favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="/favicon/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -59,6 +57,7 @@ footer{display:flex;justify-content:space-between;align-items:center;padding:cla
 @media (max-width:360px){.legal{display:flex;flex-direction:column;align-items:flex-end}.sep{display:none}.about-link{padding:10px 2px;margin:-10px 0}}
 .about-link{padding:14px 2px;margin:-14px 0;color:inherit;transition:color .2s}
 .about-link:hover{color:var(--ink)}
+.tagline{margin:0 auto;max-width:44rem;padding:0 8px;text-align:center;font-size:.8rem;line-height:1.55;color:var(--mute);text-wrap:balance}
 .marks{display:flex;gap:4px;position:relative;margin-left:-10px}
 .mark{position:relative}
 .mark .icon-btn{width:44px;height:44px}
@@ -102,6 +101,8 @@ dialog.about::backdrop{background:rgba(8,12,14,.5);backdrop-filter:blur(3px);-we
     <a class="explore" id="explore" href="#post">Explore <span aria-hidden="true">→</span></a>
   </main>
 
+  <p class="tagline">Adaptive Ecosystem is an evolving exploration of human and organizational adaptation, including Adaptive Model™, Adaptive Workflow™ and Adaptive Lab™.</p>
+
   <footer>
     <div class="marks">
       <div class="mark">
@@ -122,7 +123,7 @@ dialog.about::backdrop{background:rgba(8,12,14,.5);backdrop-filter:blur(3px);-we
 <dialog class="about" id="about" aria-labelledby="aboutTitle">
   <div class="about-in">
     <button class="icon-btn about-x" type="button" id="aboutClose" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-    <h2 id="aboutTitle">About Adaptive Ecosystem™</h2>
+    <h2 id="aboutTitle">About Adaptive Ecosystem</h2>
     <p>Adaptive Ecosystem is a personal exploration project by Phil Notot, focused on how people, teams and organizations can continuously adapt to evolving ways of working and technology.</p>
     <p>Ideas, experiments and reflections are shared through <a id="aboutCircle" href="/circle">Adaptive Circle</a>.</p>
     <p class="note">Views and content are personal and do not represent my employer.</p>
@@ -138,14 +139,14 @@ var CONTENT = {
 };
 (function(){
   var $=function(id){return document.getElementById(id)};
-  $("question").textContent=CONTENT.question;
-  $("explore").href=CONTENT.postUrl;
-  document.querySelector("[data-link=circle]").href=CONTENT.circleUrl;
+  try{$("question").textContent=CONTENT.question;}catch(e){}
+  try{$("explore").href=CONTENT.postUrl;}catch(e){}
+  try{document.querySelector("[data-link=circle]").href=CONTENT.circleUrl;}catch(e){}
 
 
   // About modal
   var ad=$("about");
-  $("aboutCircle").href=CONTENT.circleUrl;
+  try{$("aboutCircle").href=CONTENT.circleUrl;}catch(e){}
   $("aboutBtn").addEventListener("click",function(){closeMenu();if(ad.showModal)ad.showModal();else ad.setAttribute("open","")});
   $("aboutClose").addEventListener("click",function(){ad.close()});
   ad.addEventListener("click",function(e){if(e.target===ad)ad.close()});
